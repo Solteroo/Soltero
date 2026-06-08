@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soltero Dev — Контакты</title>
+  <meta name="description" content="Готов к новым проектам. Обсудим ваш проект.">
+  <meta name="theme-color" content="#080705">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" href="https://i.ibb.co/bjzxBrFX/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="https://i.ibb.co/bjzxBrFX/logo.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;800;900&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="soltero.css">
+  <style>
+    /* ── Contact page only styles ── */
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,175,55,0.12);
+      border-radius: 16px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color .2s, background .2s, box-shadow .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      opacity: 0; transition: opacity .2s;
+    }
+    .contact-card:hover {
+      border-color: rgba(212,175,55,0.3);
+      background: rgba(212,175,55,0.04);
+      box-shadow: 0 0 20px rgba(212,175,55,0.08);
+    }
+    .contact-card-icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid;
+    }
+    .contact-card-icon svg { width: 18px; height: 18px; }
+    .card-tg   .contact-card-icon { background: rgba(42,171,238,.1);  border-color: rgba(42,171,238,.25);  }
+    .card-tg   .contact-card-icon svg { stroke: #2aabee; }
+    .card-phone .contact-card-icon { background: rgba(61,210,138,.1);  border-color: rgba(61,210,138,.25);  }
+    .card-phone .contact-card-icon svg { stroke: #3DD28A; }
+    .card-email .contact-card-icon { background: rgba(212,175,55,.1);  border-color: rgba(212,175,55,.25);  }
+    .card-email .contact-card-icon svg { stroke: #D4AF37; }
+    .card-imo   .contact-card-icon { background: rgba(167,139,250,.1); border-color: rgba(167,139,250,.25); }
+    .card-imo   .contact-card-icon svg { stroke: #a78bfa; }
+    .contact-card-info { flex: 1; }
+    .contact-card-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 3px; }
+    .contact-card-value { font-size: 13px; font-weight: 600; color: #fff; }
+    .contact-card-arrow { flex-shrink: 0; opacity: .3; transition: opacity .2s, transform .2s; }
+    .contact-card:hover .contact-card-arrow { opacity: .7; transform: translateX(3px); }
+    .contact-card-arrow svg { width: 16px; height: 16px; stroke: rgba(255,255,255,.6); }
+
+    /* Form */
+    .form-wrap {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(212,175,55,.12);
+      border-radius: 18px;
+      padding: 20px 18px;
+      position: relative;
+      overflow: hidden;
+    }
+    .form-section-title {
+      font-size: 13px; font-weight: 700; color: #fff;
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .form-section-title span.bar {
+      width: 3px; height: 16px;
+      background: linear-gradient(var(--gold), rgba(212,175,55,.3));
+      border-radius: 2px; display: block; flex-shrink: 0;
+    }
+    .form-input, .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(212,175,55,.12);
+      border-radius: 12px;
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-size: 13px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      display: block;
+      margin-bottom: 10px;
+      padding: 11px 14px;
+    }
+    .form-input:focus, .form-textarea:focus {
+      border-color: rgba(212,175,55,.35);
+      box-shadow: 0 0 0 3px rgba(212,175,55,.07);
+    }
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: rgba(255,255,255,.22);
+    }
+    .form-textarea { resize: vertical; min-height: 100px; }
+    .form-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, rgba(212,175,55,.18), rgba(212,175,55,.1));
+      border: 1px solid rgba(212,175,55,.3);
+      border-radius: 12px;
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 11px; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase;
+      cursor: pointer; transition: all .2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .form-btn:hover {
+      background: linear-gradient(135deg, rgba(212,175,55,.28), rgba(212,175,55,.18));
+      border-color: rgba(212,175,55,.5);
+      box-shadow: 0 0 20px rgba(212,175,55,.2);
+    }
+    .form-btn svg { width: 14px; height: 14px; stroke: currentColor; }
+    .form-success {
+      display: none; flex-direction: column; align-items: center;
+      gap: 12px; padding: 24px 16px; text-align: center;
+    }
+    .form-success.show { display: flex; }
+    .form-success-icon {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(61,210,138,.1);
+      border: 1px solid rgba(61,210,138,.3);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .form-success-icon svg { width: 24px; height: 24px; stroke: #3DD28A; }
+    .form-success-title { font-family: 'Cinzel', serif; font-weight: 800; font-size: 16px; color: #fff; }
+    .form-success-sub   { font-size: 12px; color: rgba(255,255,255,.4); line-height: 1.6; }
+
+    /* Copy toast */
+    #copyToast {
+      position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%) translateY(10px);
+      background: rgba(20,20,20,.95); border: 1px solid rgba(212,175,55,.3);
+      border-radius: 10px; padding: 8px 18px;
+      font-size: 12px; color: var(--gold); letter-spacing: 1px;
+      opacity: 0; transition: opacity .25s, transform .25s;
+      pointer-events: none; z-index: 9999; white-space: nowrap;
+    }
+    #copyToast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* Available badge */
+    .avail-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(61,210,138,.08);
+      border: 1px solid rgba(61,210,138,.2);
+      border-radius: 20px;
+      padding: 6px 12px;
+      margin-bottom: 24px;
+      font-size: 11px; font-weight: 600;
+      color: #3DD28A; letter-spacing: .5px;
+    }
+    .avail-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #3DD28A;
+      box-shadow: 0 0 8px rgba(61,210,138,.7);
+      animation: pulse 1.8s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: .6; transform: scale(1.3); }
+    }
+    /* Field wrap + inline errors */
+    .field-wrap { position: relative; margin-bottom: 10px; }
+    .field-wrap .form-input,
+    .field-wrap .form-textarea { margin-bottom: 0; }
+    .field-error {
+      display: block; min-height: 16px;
+      font-size: 10px; font-weight: 600; letter-spacing: .4px;
+      color: #f87171; padding: 3px 4px 0;
+      opacity: 0; transform: translateY(-4px);
+      transition: opacity .2s, transform .2s;
+    }
+    .field-error.visible { opacity: 1; transform: translateY(0); }
+    .form-input.invalid, .form-textarea.invalid {
+      border-color: rgba(248,113,113,.45);
+      box-shadow: 0 0 0 3px rgba(248,113,113,.08);
+    }
+    .form-btn:disabled { opacity: .5; cursor: not-allowed; pointer-events: none; }
+  </style>
+</head>
+<body>
+
+<div class="bg-ambient"></div>
+
+<header class="header">
+  <a href="index.html" class="header-logo">
+    <div class="header-logo-icon"><img src="https://i.ibb.co/bjzxBrFX/logo.png" alt="S"></div>
+    <div class="header-logo-text">
+      <div class="header-brand">SOLTERO</div>
+      <div class="header-sub">DEV · PORTFOLIO</div>
+    </div>
+  </a>
+  <div class="header-spacer"></div>
+  <button class="lang-btn-trigger" onclick="openLangModal()" aria-label="Language">
+    <span class="lang-flag" id="headerFlag">🇷🇺</span>
+    <span class="lang-code" id="headerCode">RU</span>
+    <svg class="lang-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+  </button>
+</header>
+
+<nav class="sidebar">
+  <a href="index.html" class="nav-item"><div class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><span class="nav-label" data-i18n="navHome">Главная</span></a>
+  <a href="services.html" class="nav-item"><div class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div><span class="nav-label" data-i18n="navServices">Услуги</span></a>
+  <a href="projects.html" class="nav-item"><div class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg></div><span class="nav-label" data-i18n="navProjects">Проекты</span></a>
+  <a href="contact.html" class="nav-item active"><div class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><span class="nav-label" data-i18n="navContact">Контакты</span></a>
+  <a href="about.html" class="nav-item"><div class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span class="nav-label" data-i18n="navAbout">О нас</span></a>
+</nav>
+
+<div class="main-wrap">
+  <main class="page-content">
+    <div class="page-inner">
+
+      <!-- Page header -->
+      <div style="text-align:center;margin-bottom:32px">
+        <div class="badge" style="margin-bottom:14px;display:inline-flex">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span data-i18n="navContact">Контакты</span>
+        </div>
+        <h1 style="font-family:'Cinzel',serif;font-weight:900;font-size:clamp(22px,5vw,36px);color:#fff;margin:0 0 12px">
+          <span data-i18n="contactTitle" class="gold-shimmer">Контакты</span>
+          <span style="color:rgba(255,255,255,.8)"> — <span data-i18n="contactSubtitle" class="gold-shimmer">Готов к сотрудничеству</span></span>
+        </h1>
+        <p style="font-size:12px;color:rgba(255,255,255,.35);max-width:400px;margin:0 auto;line-height:1.7" data-i18n="contactDesc">Обсудим ваш проект.</p>
+      </div>
+
+      <!-- Available badge -->
+      <div style="display:flex;justify-content:center;margin-bottom:28px">
+        <div class="avail-badge">
+          <span class="avail-dot"></span>
+          <span data-i18n="heroAvailable">Доступен для работы</span>
+        </div>
+      </div>
+
+      <!-- Contact cards -->
+      <div id="contactContent">
+        <div class="contact-list">
+
+          <!-- Telegram -->
+          <a class="contact-card card-tg" href="https://t.me/solterodev" target="_blank" rel="noopener noreferrer">
+            <div class="contact-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+            </div>
+            <div class="contact-card-info">
+              <div class="contact-card-label" data-i18n="tgLabel">Telegram</div>
+              <div class="contact-card-value" data-i18n="tgValue">@solterodev</div>
+            </div>
+            <div class="contact-card-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+          </a>
+
+          <!-- Email -->
+          <a class="contact-card card-email" href="mailto:solterodev@gmail.com">
+            <div class="contact-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div class="contact-card-info">
+              <div class="contact-card-label" data-i18n="emailLabel">E-mail</div>
+              <div class="contact-card-value" data-i18n="emailValue">solterodev@gmail.com</div>
+            </div>
+            <div class="contact-card-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+          </a>
+
+          <!-- Phone -->
+          <a class="contact-card card-phone" href="tel:+99361403543">
+            <div class="contact-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.21 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.12 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="contact-card-info">
+              <div class="contact-card-label" data-i18n="phoneLabel">Телефон</div>
+              <div class="contact-card-value" data-i18n="phoneValue">+993 61 403 543</div>
+            </div>
+            <div class="contact-card-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+          </a>
+
+          <!-- IMO — copy on click -->
+          <div class="contact-card card-imo" onclick="copyImo()" style="cursor:pointer">
+            <div class="contact-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+            </div>
+            <div class="contact-card-info">
+              <div class="contact-card-label">IMO</div>
+              <div class="contact-card-value">+91 8826816138</div>
+            </div>
+            <div class="contact-card-arrow">
+              <svg id="imoIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Contact Form -->
+        <div class="card form-wrap">
+          <div class="card-glow-line"></div>
+          <span class="corner corner-tl"></span><span class="corner corner-tr"></span>
+          <span class="corner corner-bl"></span><span class="corner corner-br"></span>
+
+          <div class="form-section-title">
+            <span class="bar"></span>
+            <span data-i18n="formTitle">Отправить сообщение</span>
+          </div>
+
+          <div id="formBody">
+            <div class="field-wrap">
+              <input  id="f-name"  class="form-input"    type="text"  data-i18n-ph="formNamePh"  placeholder="Введите ваш email или Gmail" autocomplete="email">
+              <span class="field-error" id="err-name"></span>
+            </div>
+            <div class="field-wrap">
+              <textarea id="f-msg" class="form-textarea" data-i18n-ph="formMsgPh" placeholder="Расскажите о вашем проекте..." rows="4"></textarea>
+              <span class="field-error" id="err-msg"></span>
+            </div>
+            <button class="form-btn" id="sendBtn" onclick="submitForm()">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+              <span id="sendBtnText" data-i18n="formSend">Отправить</span>
+            </button>
+          </div>
+
+          <div class="form-success" id="formSuccess">
+            <div class="form-success-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="form-success-title">✓</div>
+            <div class="form-success-sub" data-i18n="formSuccess">Сообщение отправлено! Скоро свяжемся.</div>
+          </div>
+        </div>
+
+      </div><!-- /#contactContent -->
+
+    </div>
+  </main>
+</div>
+
+<nav class="bottom-nav">
+  <a href="index.html"    class="bnav-item"><div class="bnav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><span class="bnav-label" data-i18n="navHome">Главная</span></a>
+  <a href="services.html" class="bnav-item"><div class="bnav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div><span class="bnav-label" data-i18n="navServices">Услуги</span></a>
+  <a href="projects.html" class="bnav-item"><div class="bnav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg></div><span class="bnav-label" data-i18n="navProjects">Проекты</span></a>
+  <a href="contact.html"  class="bnav-item active"><div class="bnav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><span class="bnav-label" data-i18n="navContact">Контакты</span></a>
+  <a href="about.html"    class="bnav-item"><div class="bnav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span class="bnav-label" data-i18n="navAbout">О нас</span></a>
+</nav>
+
+<div id="lang-overlay">
+  <div class="lang-modal">
+    <div class="lang-modal-title" data-i18n="chooseLang">Выберите язык</div>
+    <div class="lang-options">
+      <div class="lang-option" data-lang="tk" onclick="setLang('tk')"><span class="lang-option-flag">🇹🇲</span><span class="lang-option-name">Türkmençe</span><svg class="lang-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m20 6-11 11-5-5"/></svg></div>
+      <div class="lang-option active" data-lang="ru" onclick="setLang('ru')"><span class="lang-option-flag">🇷🇺</span><span class="lang-option-name">Русский</span><svg class="lang-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m20 6-11 11-5-5"/></svg></div>
+      <div class="lang-option" data-lang="en" onclick="setLang('en')"><span class="lang-option-flag">🇬🇧</span><span class="lang-option-name">English</span><svg class="lang-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m20 6-11 11-5-5"/></svg></div>
+    </div>
+  </div>
+</div>
+
+<!-- Copy toast -->
+<div id="copyToast"></div>
+
+<script src="i18n.js"></script>
+<script src="projects.js"></script>
+<script src="app.js"></script>
+<script>
+
+
+// ── Validation helpers ────────────────────────────────────
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+const FORM_ERRORS = {
+  tk: {
+    emailEmpty:   'Email ýa-da Gmail giriziň',
+    emailInvalid: 'Dogry email format giriziň (mysal@gmail.com)',
+    msgEmpty:     'Habar ýazmaly',
+    msgShort:     'Habar iň az 10 harp bolmaly',
+  },
+  en: {
+    emailEmpty:   'Enter your email or Gmail',
+    emailInvalid: 'Enter a valid email address (example@gmail.com)',
+    msgEmpty:     'Please write a message',
+    msgShort:     'Message must be at least 10 characters',
+  },
+  ru: {
+    emailEmpty:   'Введите email или Gmail',
+    emailInvalid: 'Введите корректный email (example@gmail.com)',
+    msgEmpty:     'Напишите сообщение',
+    msgShort:     'Сообщение должно быть не менее 10 символов',
+  }
+};
+
+function _setError(fieldId, errId, msg) {
+  const field = document.getElementById(fieldId);
+  const span  = document.getElementById(errId);
+  if (!field || !span) return;
+  if (msg) {
+    field.classList.add('invalid');
+    span.textContent = msg;
+    span.classList.add('visible');
+  } else {
+    field.classList.remove('invalid');
+    span.textContent = '';
+    span.classList.remove('visible');
+  }
+}
+
+function _clearErrors() {
+  _setError('f-name', 'err-name', '');
+  _setError('f-msg',  'err-msg',  '');
+}
+
+// Live-clear errors as user types
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('f-name')?.addEventListener('input', () => _setError('f-name', 'err-name', ''));
+  document.getElementById('f-msg')?.addEventListener('input',  () => _setError('f-msg',  'err-msg',  ''));
+});
+
+// ── Rate limit state ──────────────────────────────────────
+let _lastSubmit = 0;
+const RATE_LIMIT_MS = 5000; // 5 s debounce
+
+// ── Form submit ───────────────────────────────────────────
+function submitForm() {
+  const lang  = typeof currentLang !== 'undefined' ? currentLang : 'ru';
+  const t     = I18N[lang] || I18N.ru;
+  const errs  = FORM_ERRORS[lang] || FORM_ERRORS.ru;
+
+  const emailEl = document.getElementById('f-name');
+  const msgEl   = document.getElementById('f-msg');
+  const email   = emailEl.value.trim();
+  const msg     = msgEl.value.trim();
+
+  // ── Validation ──
+  _clearErrors();
+  let valid = true;
+
+  if (!email) {
+    _setError('f-name', 'err-name', errs.emailEmpty);
+    valid = false;
+  } else if (!EMAIL_RE.test(email)) {
+    _setError('f-name', 'err-name', errs.emailInvalid);
+    valid = false;
+  }
+
+  if (!msg) {
+    _setError('f-msg', 'err-msg', errs.msgEmpty);
+    valid = false;
+  } else if (msg.length < 10) {
+    _setError('f-msg', 'err-msg', errs.msgShort);
+    valid = false;
+  }
+
+  if (!valid) return;
+
+  // ── Rate limit ──
+  const now = Date.now();
+  if (now - _lastSubmit < RATE_LIMIT_MS) return;
+  _lastSubmit = now;
+
+  // ── UI: loading state ──
+  const btn     = document.getElementById('sendBtn');
+  const btnText = document.getElementById('sendBtnText');
+  btn.disabled = true;
+  if (btnText) btnText.textContent = t.formSending || '...';
+
+  // ── Send to bizsoltero@gmail.com ──
+  fetch('https://formsubmit.co/ajax/bizsoltero@gmail.com', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({
+      _subject:    `Soltero Dev — ${email}`,
+      _replyto:    email,
+      email:       email,
+      message:     msg,
+      _template:   'table',
+      _captcha:    'false',
+    })
+  })
+  .catch(() => {})
+  .finally(() => {
+    document.getElementById('formBody').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+  });
+}
+</script>
+<script>if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{})</script>
+</body>
+</html>

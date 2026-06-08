@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soltero Dev — О нас</title>
+  <meta name="description" content="Full Stack & AI Developer из Туркменистана. 3+ лет опыта в Web, Mobile и AI.">
+  <meta name="theme-color" content="#080705">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" href="https://i.ibb.co/bjzxBrFX/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="https://i.ibb.co/bjzxBrFX/logo.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;800;900&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="soltero.css">
+  <style>
+    /* ── About page — Profile Card ── */
+    .profile-card {
+      border-radius: 20px; overflow: hidden; margin-bottom: 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,175,55,0.15);
+      animation: fadeUp 0.6s ease both, glowPulse 4s ease-in-out 0.6s infinite;
+    }
+    @keyframes glowPulse {
+      0%,100% { box-shadow: 0 0 20px rgba(212,175,55,0.08); }
+      50%      { box-shadow: 0 0 40px rgba(212,175,55,0.22), 0 0 80px rgba(212,175,55,0.06); }
+    }
+    .profile-cover {
+      height: 90px;
+      background: linear-gradient(135deg, #14100A, #0e0e0e);
+      position: relative; overflow: hidden;
+    }
+    .profile-cover::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(212,175,55,0.12), transparent, rgba(212,175,55,0.06));
+    }
+    .cover-orb {
+      position: absolute; top: -20px; right: -20px;
+      width: 180px; height: 180px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 70%);
+    }
+    .cover-particle {
+      position: absolute; border-radius: 50%; opacity: 0.4;
+      animation: coverFloat linear infinite;
+    }
+    @keyframes coverFloat {
+      0%   { transform: translateY(0)    rotate(0deg);   opacity: 0.4; }
+      50%  {                                             opacity: 0.8; }
+      100% { transform: translateY(-80px) rotate(360deg); opacity: 0; }
+    }
+    .profile-body { padding: 0 20px 24px; }
+    .avatar-wrap { margin-top: -44px; margin-bottom: 16px; position: relative; display: inline-block; }
+    .avatar-ring {
+      position: absolute; inset: -4px; border-radius: 50%;
+      background: conic-gradient(from 0deg, #D4AF37, transparent 30%, #FFD700 60%, transparent 80%, #D4AF37);
+      animation: avatarSpin 4s linear infinite;
+    }
+    @keyframes avatarSpin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+    .avatar-ring-mask { position: absolute; inset: -3px; border-radius: 50%; background: var(--surface, #0c0c0a); }
+    .avatar {
+      width: 90px; height: 90px; border-radius: 50%; overflow: hidden;
+      border: 3px solid var(--surface, #0c0c0a);
+      box-shadow: rgba(212,175,55,0.4) 0 0 30px, rgba(0,0,0,0.6) 0 8px 30px;
+      position: relative; z-index: 1;
+      animation: avatarBob 3s ease-in-out infinite;
+    }
+    @keyframes avatarBob { 0%,100%{transform:translateY(0) rotateY(0deg)} 50%{transform:translateY(-4px) rotateY(3deg)} }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+
+    
+/* small glowing dot (optional if you add <span class="dot"></span>) */
+.available-badge .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 10px rgba(34,197,94,0.6);
+}
+
+/* animation */
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 8px 28px rgba(212,175,55,0.22);
+  }
+}
+  .available-badge {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 0;
+
+  display: inline-flex;
+  align-items: left;
+  gap: 8px;
+
+  padding: 5px 12px;
+
+  background: rgba(8, 7, 5, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 999px;
+
+  color: #D4AF37;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+
+  box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+
+  animation: badgePulse 2.4s ease-in-out infinite;
+}
+
+    .badge-dot { width: 5px; height: 5px; border-radius: 50%; background: #fff; animation: dotBlink 1.2s ease-in-out infinite; }
+    @keyframes dotBlink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .badge-text { font-size: 8px; font-weight: 800; color: #fff; letter-spacing: 1px; text-transform: uppercase; }
+
+    .profile-meta { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
+    .name-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+    .profile-name { font-family: 'Cinzel', serif; font-weight: 800; font-size: 20px; color: #fff; }
+    .pro-badge {
+      background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3);
+      border-radius: 5px; padding: 2px 7px; font-size: 9px; font-weight: 700;
+      color: #D4AF37; letter-spacing: 1px;
+    }
+    .profile-role { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+    .profile-location { display: flex; align-items: center; gap: 5px; }
+    .profile-location svg { width: 11px; height: 11px; stroke: rgba(255,255,255,0.3); fill: none; }
+    .profile-location span { font-size: 11px; color: rgba(255,255,255,0.35); }
+
+    .tg-btn {
+      width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
+      background: linear-gradient(135deg, #D4AF37, #b8941f);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: rgba(212,175,55,0.3) 0 3px 16px;
+      text-decoration: none; transition: 0.2s;
+      animation: tgPulse 3s ease-in-out infinite;
+    }
+    @keyframes tgPulse { 0%,100%{box-shadow:rgba(212,175,55,0.3) 0 3px 16px} 50%{box-shadow:rgba(212,175,55,0.6) 0 3px 28px} }
+    .tg-btn:hover { transform: translateY(-2px) scale(1.05); }
+    .tg-btn svg { width: 18px; height: 18px; stroke: #080808; fill: none; }
+
+    /* ── Stats ── */
+    .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 20px; }
+    .stat-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.1);
+      border-radius: 14px; padding: 14px 8px; text-align: center;
+      position: relative; overflow: hidden; transition: 0.3s;
+      animation: fadeUp 0.6s ease both;
+    }
+    .stat-card:hover { border-color: rgba(212,175,55,0.25); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212,175,55,0.1); }
+    .stat-card::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(circle at 50% 0%, rgba(212,175,55,0.08) 0%, transparent 70%);
+    }
+    .stat-num { font-family: 'Cinzel', serif; font-weight: 800; font-size: 20px; color: #D4AF37; }
+    .stat-label { font-size: 9px; color: rgba(255,255,255,0.35); margin-top: 4px; letter-spacing: 0.5px; text-transform: uppercase; }
+
+    /* ── Tech Stack ── */
+    .tech-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(80px,1fr));
+      gap: 8px; margin-bottom: 4px;
+    }
+    .tech-item {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      padding: 12px 8px; border-radius: 14px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.1);
+      transition: 0.3s; cursor: default; position: relative; overflow: hidden;
+      animation: fadeUp 0.5s ease both;
+    }
+    .tech-item:hover {
+      border-color: rgba(212,175,55,0.25); transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 12px 40px rgba(212,175,55,0.15), 0 0 20px rgba(212,175,55,0.08);
+    }
+    .tech-item::after {
+      content: ''; position: absolute; inset: 0; border-radius: 14px;
+      background: radial-gradient(circle at 50% 0%, rgba(212,175,55,0.1) 0%, transparent 70%);
+      opacity: 0; transition: 0.3s;
+    }
+    .tech-item:hover::after { opacity: 1; }
+    .tech-icon { font-size: 20px; line-height: 1; filter: drop-shadow(0 0 6px rgba(212,175,55,0.4)); }
+    .tech-name { font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.65); letter-spacing: 0.5px; text-align: center; }
+
+    /* ── Skills ── */
+    .skills-list { display: flex; flex-direction: column; gap: 14px; }
+    .skill-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .skill-name { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.75); }
+    .skill-pct { font-size: 11px; font-weight: 700; color: #D4AF37; }
+    .skill-track { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; }
+    .skill-bar {
+      height: 100%; border-radius: 3px;
+      background: linear-gradient(90deg, #D4AF37, rgba(212,175,55,0.6), rgba(212,175,55,0.35));
+      box-shadow: rgba(212,175,55,0.4) 0 0 10px;
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 1.2s cubic-bezier(0.4,0,0.2,1);
+    }
+    .skill-bar.animated { transform: scaleX(1); }
+
+    /* ── Feedback ── */
+    .feedback-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .feedback-controls { display: flex; gap: 6px; }
+    .ctrl-btn {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 1px solid rgba(212,175,55,0.2); background: rgba(212,175,55,0.06);
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      transition: 0.2s; color: inherit;
+    }
+    .ctrl-btn:hover { border-color: rgba(212,175,55,0.3); background: rgba(212,175,55,0.12); }
+    .ctrl-btn svg { width: 14px; height: 14px; stroke: #D4AF37; fill: none; }
+    .feedback-slider { position: relative; overflow: hidden; border-radius: 20px; }
+    .feedback-track { display: flex; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+    .feedback-card {
+      min-width: 100%; border-radius: 20px;
+      background: rgba(12,12,12,0.85); backdrop-filter: blur(24px);
+      border: 1px solid rgba(61,210,138,0.2); padding: 22px 20px;
+      position: relative; overflow: hidden;
+      box-shadow: rgba(0,0,0,0.4) 0 8px 40px, rgba(61,210,138,0.06) 0 0 60px;
+      transition: border-color 0.3s;
+    }
+    .feedback-card:hover { border-color: rgba(61,210,138,0.35); }
+    .card-orb {
+      position: absolute; top: -40px; right: -40px; width: 160px; height: 160px;
+      border-radius: 50%; pointer-events: none;
+    }
+    .quote-icon { position: absolute; top: 16px; right: 18px; opacity: 0.07; }
+    .quote-icon svg { width: 48px; height: 48px; stroke: #3DD28A; fill: none; }
+    .stars { display: flex; gap: 3px; margin-bottom: 14px; }
+    .star { width: 13px; height: 13px; fill: #D4AF37; stroke: #D4AF37; }
+    .feedback-text { font-size: 12px; color: rgba(255,255,255,0.72); line-height: 1.85; margin-bottom: 16px; font-style: italic; }
+    .project-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(61,210,138,0.06); border: 1px solid rgba(61,210,138,0.15);
+      border-radius: 6px; padding: 3px 10px; margin-bottom: 16px;
+    }
+    .project-dot { width: 5px; height: 5px; border-radius: 50%; display: block; }
+    .project-name { font-size: 9px; font-weight: 700; letter-spacing: 0.8px; }
+    .reviewer { display: flex; align-items: center; gap: 12px; }
+    .reviewer-avatar {
+      width: 44px; height: 44px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
+      border: 2px solid rgba(61,210,138,0.25); box-shadow: rgba(61,210,138,0.2) 0 0 14px;
+    }
+    .reviewer-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .reviewer-name { font-weight: 700; font-size: 13px; color: #fff; }
+    .reviewer-role { font-size: 10px; color: rgba(255,255,255,0.38); margin-top: 2px; }
+    .dots { display: flex; justify-content: center; gap: 7px; margin-top: 16px; }
+    .dot { height: 7px; border-radius: 4px; border: none; cursor: pointer; transition: 0.3s; background: rgba(255,255,255,0.12); }
+    .dot.active { width: 20px; background: #D4AF37; }
+    .dot:not(.active) { width: 7px; }
+
+    /* ── Experience cards ── */
+    .exp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 12px; }
+    .exp-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.1);
+      border-radius: 16px; padding: 18px 16px; transition: 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .exp-card:hover { border-color: rgba(212,175,55,0.25); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212,175,55,0.1); }
+    .exp-card-glow { position: absolute; top: -40px; right: -40px; width: 100px; height: 100px; border-radius: 50%; }
+    .exp-num { font-family: 'Cinzel', serif; font-weight: 900; font-size: 28px; color: #D4AF37; margin-bottom: 4px; opacity: 0.9; }
+    .exp-title { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .exp-desc { font-size: 11px; color: rgba(255,255,255,0.38); line-height: 1.6; }
+
+    /* ── CV button ── */
+    .cv-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.06));
+      border: 1px solid rgba(212,175,55,0.3); border-radius: 12px;
+      padding: 11px 20px; color: #D4AF37; font-family: 'Raleway', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+      text-decoration: none; cursor: pointer; transition: 0.25s;
+    }
+    .cv-btn:hover { background: linear-gradient(135deg, rgba(212,175,55,0.22), rgba(212,175,55,0.1)); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,175,55,0.2); }
+    .cv-btn svg { width: 14px; height: 14px; stroke: #D4AF37; fill: none; }
+
+    @media(max-width:400px) {
+      .tech-grid { grid-template-columns: repeat(3,1fr); }
+      .profile-name { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-ambient"></div>
+
+<header class="header">
+  <a href="index.html" class="header-logo">
+    <div class="header-logo-icon"><img src="https://i.ibb.co/bjzxBrFX/logo.png" alt="S"></div>
+    <div class="header-logo-text">
+      <div class="header-brand">SOLTERO</div>
+      <div class="header-sub">DEV · PORTFOLIO</div>
+    </div>
+  </a>
+  <div class="header-spacer"></div>
+  <button class="lang-btn-trigger" onclick="openLangModal()" aria-label="Language">
+    <span class="lang-flag" id="headerFlag">🇷🇺</span>
+    <span class="lang-code" id="headerCode">RU</span>
+    <svg class="lang-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+  </button>
+</header>
+
+<nav class="sidebar">
+  <a href="index.html" class="nav-item">
+    <div class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+    <span class="nav-label" data-i18n="navHome">Главная</span>
+  </a>
+  <a href="services.html" class="nav-item">
+    <div class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div>
+    <span class="nav-label" data-i18n="navServices">Услуги</span>
+  </a>
+  <a href="projects.html" class="nav-item">
+    <div class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg></div>
+    <span class="nav-label" data-i18n="navProjects">Проекты</span>
+  </a>
+  <a href="contact.html" class="nav-item">
+    <div class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+    <span class="nav-label" data-i18n="navContact">Контакты</span>
+  </a>
+  <a href="about.html" class="nav-item active">
+    <div class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <span class="nav-label" data-i18n="navAbout">О нас</span>
+  </a>
+</nav>
+
+<div class="main-wrap">
+  <main class="page-content">
+    <div class="page-inner" id="aboutContent">
+
+      <!-- Page header -->
+      <div style="text-align:center;margin-bottom:32px">
+        <div class="badge" style="margin-bottom:14px;display:inline-flex">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span data-i18n="navAbout">О нас</span>
+        </div>
+        <h1 style="font-family:'Cinzel',serif;font-weight:900;font-size:clamp(22px,5vw,36px);color:#fff;margin:0 0 12px">
+          <span data-i18n="aboutTitle" class="gold-shimmer">О нас</span>
+          <span style="color:rgba(255,255,255,.8)"> — <span data-i18n="aboutSubtitle" class="gold-shimmer">О разработчике</span></span>
+        </h1>
+        <p style="font-size:12px;color:rgba(255,255,255,.35);max-width:420px;margin:0 auto;line-height:1.7" data-i18n="aboutBio">
+          Я Soltero — Full Stack &amp; AI разработчик из Туркменистана.
+        </p>
+      </div>
+
+      <!-- Profile Card -->
+      <div class="profile-card" id="profileCard">
+        <div class="profile-cover" id="profileCover">
+          <div class="cover-orb"></div>
+        </div>
+        <div class="profile-body">
+          <div class="avatar-wrap">
+            <div class="avatar-ring"></div>
+            <div class="avatar-ring-mask"></div>
+            <div class="avatar">
+              <img src="https://i.ibb.co/bjzxBrFX/logo.png" alt="Soltero Dev">
+            </div>
+            <div class="available-badge">
+              <div class="badge-dot"></div>
+              <span class="badge-text" data-i18n="heroAvailable">Доступен</span>
+            </div>
+          </div>
+
+          <div class="profile-meta">
+            <div>
+              <div class="name-row">
+                <span class="profile-name">Soltero Dev</span>
+                <span class="pro-badge">PRO</span>
+              </div>
+              <div class="profile-role" data-i18n="heroRole">Full Stack &amp; AI Developer</div>
+              <div class="profile-location">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <span data-i18n="heroLocation">Туркменистан · Удалённо</span>
+              </div>
+            </div>
+            <a href="https://t.me/solterodev" target="_blank" rel="noopener" class="tg-btn">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/>
+                <path d="m21.854 2.147-10.94 10.939"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Stats -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-num">24+</div>
+              <div class="stat-label" data-i18n="statProjects">Проекты</div>
+            </div>
+            <div class="stat-card" style="animation-delay:.1s">
+              <div class="stat-num">3+</div>
+              <div class="stat-label" data-i18n="statYears">Лет</div>
+            </div>
+            <div class="stat-card" style="animation-delay:.2s">
+              <div class="stat-num">18+</div>
+              <div class="stat-label" data-i18n="statClients">Клиентов</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Stack -->
+      <div class="card" style="margin-bottom:16px;padding:20px 18px;animation:fadeUp .6s ease both .15s">
+        <div class="card-glow-line"></div>
+        <span class="corner corner-tl"></span><span class="corner corner-tr"></span>
+        <span class="corner corner-bl"></span><span class="corner corner-br"></span>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:10px">
+          <span style="width:3px;height:16px;background:linear-gradient(#D4AF37,rgba(212,175,55,.3));border-radius:2px;display:block;flex-shrink:0"></span>
+          <span data-i18n="techStackTitle">Технологии</span>
+        </div>
+        <div class="tech-grid" id="techGrid"></div>
+      </div>
+
+      <!-- Skill Bars -->
+      <div class="card" style="margin-bottom:16px;padding:20px 18px;animation:fadeUp .6s ease both .25s">
+        <div class="card-glow-line"></div>
+        <span class="corner corner-tl"></span><span class="corner corner-tr"></span>
+        <span class="corner corner-bl"></span><span class="corner corner-br"></span>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:10px">
+          <span style="width:3px;height:16px;background:linear-gradient(#D4AF37,rgba(212,175,55,.3));border-radius:2px;display:block;flex-shrink:0"></span>
+          <span data-i18n="skillsTitle">Навыки</span>
+        </div>
+        <div class="skills-list" id="skillsList"></div>
+      </div>
+
+      <!-- Experience Cards -->
+      <div class="card" style="margin-bottom:16px;padding:20px 18px;animation:fadeUp .6s ease both .35s">
+        <div class="card-glow-line"></div>
+        <span class="corner corner-tl"></span><span class="corner corner-tr"></span>
+        <span class="corner corner-bl"></span><span class="corner corner-br"></span>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:10px">
+          <span style="width:3px;height:16px;background:linear-gradient(#D4AF37,rgba(212,175,55,.3));border-radius:2px;display:block;flex-shrink:0"></span>
+          <span data-i18n="expTitle">Опыт</span>
+        </div>
+        <div class="exp-grid">
+          <div class="exp-card">
+            <div class="exp-card-glow" style="background:radial-gradient(circle,rgba(42,171,238,.1) 0%,transparent 70%)"></div>
+            <div class="exp-num">01</div>
+            <div class="exp-title" data-i18n="expItem1Title">Прочная база</div>
+            <div class="exp-desc" data-i18n="expItem1Desc">Опыт работы с React, Node.js, Python</div>
+          </div>
+          <div class="exp-card">
+            <div class="exp-card-glow" style="background:radial-gradient(circle,rgba(167,139,250,.1) 0%,transparent 70%)"></div>
+            <div class="exp-num">02</div>
+            <div class="exp-title" data-i18n="expItem2Title">AI Интеграция</div>
+            <div class="exp-desc" data-i18n="expItem2Desc">Реальные проекты с GPT-4, TensorFlow</div>
+          </div>
+          <div class="exp-card">
+            <div class="exp-card-glow" style="background:radial-gradient(circle,rgba(61,210,138,.1) 0%,transparent 70%)"></div>
+            <div class="exp-num">03</div>
+            <div class="exp-title" data-i18n="expItem3Title">Мобильное мастерство</div>
+            <div class="exp-desc" data-i18n="expItem3Desc">iOS &amp; Android с React Native</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Client Feedback -->
+      <div class="card" style="margin-bottom:16px;padding:20px 18px;animation:fadeUp .6s ease both .45s">
+        <div class="card-glow-line"></div>
+        <span class="corner corner-tl"></span><span class="corner corner-tr"></span>
+        <span class="corner corner-bl"></span><span class="corner corner-br"></span>
+        <div class="feedback-header">
+          <div style="font-size:13px;font-weight:700;color:#fff;display:flex;align-items:center;gap:10px">
+            <span style="width:3px;height:16px;background:linear-gradient(#D4AF37,rgba(212,175,55,.3));border-radius:2px;display:block;flex-shrink:0"></span>
+            <span id="feedbackTitle">Отзывы клиентов</span>
+          </div>
+          <div class="feedback-controls">
+            <button class="ctrl-btn" onclick="slideReview(-1)" aria-label="Prev">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button class="ctrl-btn" onclick="slideReview(1)" aria-label="Next">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="feedback-slider">
+          <div class="feedback-track" id="feedbackTrack"></div>
+        </div>
+        <div class="dots" id="dots"></div>
+      </div>
+
+    </div><!-- /page-inner -->
+  </main>
+</div>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="bnav-item"><div class="bnav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><span class="bnav-label" data-i18n="navHome">Главная</span></a>
+  <a href="services.html" class="bnav-item"><div class="bnav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div><span class="bnav-label" data-i18n="navServices">Услуги</span></a>
+  <a href="projects.html" class="bnav-item"><div class="bnav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg></div><span class="bnav-label" data-i18n="navProjects">Проекты</span></a>
+  <a href="contact.html" class="bnav-item"><div class="bnav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><span class="bnav-label" data-i18n="navContact">Контакты</span></a>
+  <a href="about.html" class="bnav-item active"><div class="bnav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span class="bnav-label" data-i18n="navAbout">О нас</span></a>
+</nav>
+
+<div id="lang-overlay">
+  <div class="lang-modal">
+    <div class="lang-modal-title" data-i18n="chooseLang">Выберите язык</div>
+    <div class="lang-options">
+      <div class="lang-option" data-lang="tk" onclick="setLang('tk')"><span class="lang-option-flag">🇹🇲</span><span class="lang-option-name">Türkmençe</span><svg class="lang-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m20 6-11 11-5-5"/></svg></div>
+      <div class="lang-option active" data-lang="ru" onclick="setLang('ru')"><span class="lang-option-flag">🇷🇺</span><span class="lang-option-name">Русский</span><svg class="lang-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m20 6-11 11-5-5"/></svg></div>
+      <div class="lang-option" data-lang="en" onclick="setLang('en')"><span class="lang-option-flag">🇬🇧</span><span class="lang-option-name">English</span><svg class="lang-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m20 6-11 11-5-5"/></svg></div>
+    </div>
+  </div>
+</div>
+
+<script src="i18n.js"></script>
+<script src="projects.js"></script>
+<script src="app.js"></script>
+<script src="sw.js"></script>
+<script>
+// ── Tech stack data ─────────────────────────────────────
+const TECH_ITEMS = [
+  {icon:'⚛️', name:'React'},   {icon:'▲',  name:'Next.js'},
+  {icon:'🐍', name:'Python'},  {icon:'🟢', name:'Node.js'},
+  {icon:'🔷', name:'TypeScript'},{icon:'🌊', name:'Tailwind'},
+  {icon:'🐘', name:'PostgreSQL'},{icon:'🐳', name:'Docker'},
+  {icon:'🤖', name:'OpenAI'},  {icon:'🎨', name:'Figma'},
+];
+
+const SKILL_DATA = [
+  { tk:'React / Next.js',       en:'React / Next.js',       ru:'React / Next.js',       pct:95 },
+  { tk:'Python / AI/ML',        en:'Python / AI/ML',        ru:'Python / AI/ML',        pct:88 },
+  { tk:'Node.js / Backend',     en:'Node.js / Backend',     ru:'Node.js / Backend',     pct:85 },
+  { tk:'UI/UX Dizaýn',          en:'UI/UX Design',          ru:'UI/UX Дизайн',          pct:80 },
+  { tk:'Mobil (React Native)',  en:'Mobile (React Native)', ru:'Мобил (React Native)',  pct:75 },
+];
+
+const REVIEWS = [
+  {
+    stars:5,
+    text:{
+      tk:'"Kripto analitika platformasy ähli garaşmalarymyzy aşdy. Real-time maglumat we sıfyr ýalňyşlyk."',
+      en:'"The crypto analytics platform exceeded all our expectations. Real-time data and zero bugs on launch day."',
+      ru:'"Платформа крипто-аналитики превзошла все ожидания. Данные в реальном времени и ноль багов в день запуска."'
+    },
+    project:'Crypto Analytics Platform',
+    avatar:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face',
+    name:'Marcus Lee',
+    role:{ tk:'Direktory', en:'CEO', ru:'CEO' },
+    company:'CryptoVault', color:'#3DD28A'
+  },
+  {
+    stars:5,
+    text:{
+      tk:'"AI bilen işleýän e-commerce platformasy biziň satuwymyzy 3× artdyrdy. Düşnükli dizaýn we ajaýyp öndürijilik."',
+      en:'"The AI-powered e-commerce platform tripled our sales. Clean design and outstanding performance across all devices."',
+      ru:'"ИИ-платформа электронной коммерции утроила наши продажи. Чистый дизайн и отличная производительность."'
+    },
+    project:'AI E-Commerce Platform',
+    avatar:'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face',
+    name:'Aisha Rahman',
+    role:{ tk:'Esaslandyryjy', en:'Founder', ru:'Основатель' },
+    company:'ShopSmart AI', color:'#818cf8'
+  },
+  {
+    stars:5,
+    text:{
+      tk:'"Müşderi maglumat paneli taslamasyny wagtynda we ýokary hilli ýerine ýetirdi. Geljekde-de hökman işleşeris."',
+      en:'"Delivered the client dashboard project on time and with exceptional quality. We will definitely work together again."',
+      ru:'"Проект панели управления выполнен в срок с исключительным качеством. Обязательно будем сотрудничать снова."'
+    },
+    project:'SaaS Dashboard',
+    avatar:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
+    name:'Dmitri Volkov',
+    role:{ tk:'CTO', en:'CTO', ru:'CTO' },
+    company:'DataFlow', color:'#f59e0b'
+  },
+  {
+    stars:5,
+    text:{
+      tk:'"Mobile app üçin React Native çözgüdi ajaýyp işleýär. Dizaýn doly professional we ulanyjy üçin örän amatly."',
+      en:'"The React Native mobile solution works flawlessly. Fully professional design and very user-friendly experience."',
+      ru:'"Решение на React Native работает безупречно. Профессиональный дизайн и удобный пользовательский опыт."'
+    },
+    project:'Mobile App React Native',
+    avatar:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop&crop=face',
+    name:'Sara Müller',
+    role:{ tk:'Önüm dolandyryjysy', en:'Product Manager', ru:'Менеджер продукта' },
+    company:'AppForge', color:'#3DD28A'
+  }
+];
+
+let reviewIdx = 0, reviewTimer;
+
+// ── Render tech grid ────────────────────────────────────
+function renderTechGrid() {
+  const g = document.getElementById('techGrid');
+  if (!g) return;
+  g.innerHTML = TECH_ITEMS.map((t, i) =>
+    `<div class="tech-item" style="animation-delay:${i*0.05}s">
+       <div class="tech-icon">${t.icon}</div>
+       <div class="tech-name">${t.name}</div>
+     </div>`
+  ).join('');
+  g.querySelectorAll('.tech-item').forEach(c => {
+    c.addEventListener('mousemove', e => {
+      const r = c.getBoundingClientRect();
+      const x = (e.clientX-r.left)/r.width - 0.5;
+      const y = (e.clientY-r.top)/r.height - 0.5;
+      c.style.transform = `translateY(-4px) scale(1.03) rotateX(${-y*12}deg) rotateY(${x*12}deg)`;
+    });
+    c.addEventListener('mouseleave', () => { c.style.transform = ''; });
+  });
+}
+
+// ── Render skill bars ───────────────────────────────────
+function renderSkillBars(lang) {
+  const el = document.getElementById('skillsList');
+  if (!el) return;
+  el.innerHTML = SKILL_DATA.map(s =>
+    `<div>
+       <div class="skill-header">
+         <span class="skill-name">${s[lang] || s.en}</span>
+         <span class="skill-pct">${s.pct}%</span>
+       </div>
+       <div class="skill-track">
+         <div class="skill-bar" style="width:${s.pct}%"></div>
+       </div>
+     </div>`
+  ).join('');
+  setTimeout(() => el.querySelectorAll('.skill-bar').forEach(b => b.classList.add('animated')), 300);
+}
+
+// ── Render reviews ──────────────────────────────────────
+function renderReviews(lang) {
+  const track = document.getElementById('feedbackTrack');
+  const dotsEl = document.getElementById('dots');
+  const title  = document.getElementById('feedbackTitle');
+  if (!track) return;
+
+  const labels = { tk:'Müşderi Pikirleri', en:'Client Feedback', ru:'Отзывы клиентов' };
+  if (title) title.textContent = labels[lang] || labels.en;
+
+  track.innerHTML = REVIEWS.map(r => {
+    const stars = '<svg class="star" viewBox="0 0 24 24"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>'.repeat(r.stars);
+    return `<div class="feedback-card">
+      <div class="card-orb" style="background:radial-gradient(circle,${r.color}14 0%,transparent 70%)"></div>
+      <div class="quote-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></div>
+      <div class="stars">${stars}</div>
+      <p class="feedback-text">${r.text[lang] || r.text.en}</p>
+      <div class="project-tag">
+        <span class="project-dot" style="background:${r.color}"></span>
+        <span class="project-name" style="color:${r.color}">${r.project}</span>
+      </div>
+      <div class="reviewer">
+        <div class="reviewer-avatar" style="border-color:${r.color}40;box-shadow:${r.color}33 0 0 14px">
+          <img src="${r.avatar}" alt="${r.name}" loading="lazy">
+        </div>
+        <div>
+          <div class="reviewer-name">${r.name}</div>
+          <div class="reviewer-role">${r.role[lang] || r.role.en} · <span style="color:${r.color}">${r.company}</span></div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  dotsEl.innerHTML = REVIEWS.map((_,i) =>
+    `<button class="dot${i===reviewIdx?' active':''}" onclick="goToReview(${i})"></button>`
+  ).join('');
+  goToReview(reviewIdx, false);
+}
+
+function goToReview(idx, animate=true) {
+  reviewIdx = idx;
+  const track = document.getElementById('feedbackTrack');
+  if (!animate) track.style.transition = 'none';
+  track.style.transform = `translateX(-${idx*100}%)`;
+  if (!animate) setTimeout(() => track.style.transition = '', 50);
+  document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===idx));
+  clearInterval(reviewTimer);
+  reviewTimer = setInterval(() => goToReview((reviewIdx+1) % REVIEWS.length), 4200);
+}
+
+function slideReview(dir) {
+  goToReview((reviewIdx + dir + REVIEWS.length) % REVIEWS.length);
+}
+
+// ── Cover particles ─────────────────────────────────────
+function spawnParticles() {
+  const cover = document.getElementById('profileCover');
+  if (!cover) return;
+  for (let i = 0; i < 8; i++) {
+    const p = document.createElement('div');
+    p.className = 'cover-particle';
+    const s = 3 + Math.random() * 5;
+    p.style.cssText = `width:${s}px;height:${s}px;background:rgba(212,175,55,${0.3+Math.random()*0.5});left:${Math.random()*100}%;top:${20+Math.random()*60}%;animation-duration:${3+Math.random()*4}s;animation-delay:${Math.random()*4}s`;
+    cover.appendChild(p);
+  }
+}
+
+// ── 3D tilt on profile card ─────────────────────────────
+function initTilt() {
+  const card = document.getElementById('profileCard');
+  if (!card) return;
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX-r.left)/r.width - 0.5;
+    const y = (e.clientY-r.top)/r.height - 0.5;
+    card.style.transform = `perspective(800px) rotateX(${-y*4}deg) rotateY(${x*4}deg) scale(1.01)`;
+  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+}
+
+// ── Skill bar scroll animation ──────────────────────────
+function initSkillObserver() {
+  const el = document.getElementById('skillsList');
+  if (!el) return;
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting)
+        e.target.querySelectorAll('.skill-bar').forEach(b => b.classList.add('animated'));
+    });
+  }, { threshold: 0.3 }).observe(el);
+}
+
+// ── About-page boot ─────────────────────────────────────
+// app.js owns DOMContentLoaded and calls renderAbout() via
+// PAGE === "about". We only register the page-specific helpers
+// that app.js's renderAbout() delegates to. No override needed.
+
+// Expose helpers so app.js renderAbout() can call them
+window.aboutPage = {
+  renderTechGrid,
+  renderSkillBars,
+  renderReviews,
+  spawnParticles,
+  initTilt,
+  initSkillObserver,
+};
+
+// One-time visual setup (particles, tilt, observer) that is
+// independent of language — run after DOM is ready.
+document.addEventListener('DOMContentLoaded', () => {
+  renderTechGrid();
+  spawnParticles();
+  initTilt();
+  initSkillObserver();
+  // Skill bars + reviews are driven by app.js → renderAbout()
+  // which fires right after this via its own DOMContentLoaded.
+  // But as a safe fallback in case ordering varies:
+  const lang = localStorage.getItem('sdev_lang') || 'ru';
+  renderSkillBars(lang);
+  renderReviews(lang);
+});
+</script>
+
+</body>
+</html>

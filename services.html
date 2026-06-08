@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soltero Dev — Услуги</title>
+  <meta name="description" content="Профессиональные web, мобильные и AI решения.">
+  <meta name="theme-color" content="#080705">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" href="https://i.ibb.co/bjzxBrFX/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="https://i.ibb.co/bjzxBrFX/logo.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;800;900&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="soltero.css">
+  <style>
+    /* ── Process Steps (services page only) ── */
+    .process-steps { display: flex; flex-direction: column; gap: 0; }
+    .process-step {
+      display: flex; gap: 14px;
+      padding-bottom: 20px; position: relative;
+    }
+    .process-step:not(:last-child)::before {
+      content: '';
+      position: absolute; left: 17px; top: 34px;
+      width: 1px; height: calc(100% - 14px);
+      background: linear-gradient(to bottom, rgba(212,175,55,.3), rgba(212,175,55,.05));
+    }
+    .process-num-wrap {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: rgba(212,175,55,.1);
+      border: 1px solid rgba(212,175,55,.2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; position: relative; z-index: 1;
+      transition: all .3s;
+    }
+    .process-step:hover .process-num-wrap {
+      background: rgba(212,175,55,.18);
+      border-color: rgba(212,175,55,.4);
+      box-shadow: 0 0 16px rgba(212,175,55,.2);
+    }
+    .process-num {
+      font-family: 'Cinzel', serif; font-weight: 800;
+      font-size: 10px; color: var(--gold);
+    }
+    .process-step-title { font-weight: 700; font-size: 12px; color: #fff; margin-bottom: 4px; }
+    .process-step-desc  { font-size: 11px; color: rgba(255,255,255,.38); line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+<div class="bg-ambient"></div>
+
+<header class="header">
+  <a href="index.html" class="header-logo">
+    <div class="header-logo-icon"><img src="https://i.ibb.co/bjzxBrFX/logo.png" alt="S"></div>
+    <div class="header-logo-text">
+      <div class="header-brand">SOLTERO</div>
+      <div class="header-sub">DEV · PORTFOLIO</div>
+    </div>
+  </a>
+  <div class="header-spacer"></div>
+  <button class="lang-btn-trigger" onclick="openLangModal()" aria-label="Language">
+    <span class="lang-flag" id="headerFlag">🇷🇺</span>
+    <span class="lang-code" id="headerCode">RU</span>
+    <svg class="lang-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+  </button>
+</header>
+
+<nav class="sidebar">
+  <a href="index.html" class="nav-item">
+    <div class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+    <span class="nav-label" data-i18n="navHome">Главная</span>
+  </a>
+  <a href="services.html" class="nav-item active">
+    <div class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div>
+    <span class="nav-label" data-i18n="navServices">Услуги</span>
+  </a>
+  <a href="projects.html" class="nav-item">
+    <div class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg></div>
+    <span class="nav-label" data-i18n="navProjects">Проекты</span>
+  </a>
+  <a href="contact.html" class="nav-item">
+    <div class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+    <span class="nav-label" data-i18n="navContact">Контакты</span>
+  </a>
+  <a href="about.html" class="nav-item">
+    <div class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <span class="nav-label" data-i18n="navAbout">О нас</span>
+  </a>
+</nav>
+
+<div class="main-wrap">
+  <main class="page-content">
+    <div class="page-inner">
+
+      <!-- Page header -->
+      <div style="text-align:center;margin-bottom:32px">
+        <div class="badge" style="margin-bottom:14px;display:inline-flex">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+          <span data-i18n="navServices">Услуги</span>
+        </div>
+        <h1 style="font-family:'Cinzel',serif;font-weight:900;font-size:clamp(22px,5vw,36px);color:#fff;margin:0 0 12px">
+          <span data-i18n="servicesTitle" class="gold-shimmer">Услуги</span>
+          <span style="color:rgba(255,255,255,.8)"> — <span data-i18n="servicesSubtitle" class="gold-shimmer">Что предлагается</span></span>
+        </h1>
+        <p style="font-size:12px;color:rgba(255,255,255,.35);max-width:400px;margin:0 auto;line-height:1.7" data-i18n="servicesDesc">Профессиональные web, мобильные и AI решения.</p>
+      </div>
+
+      <!-- Services grid — rendered by app.js -->
+      <div id="servicesContent"></div>
+
+      <!-- Process section -->
+      <div class="card" style="margin-top:28px;padding:22px 18px">
+        <div class="card-glow-line"></div>
+        <span class="corner corner-tl"></span><span class="corner corner-tr"></span>
+        <span class="corner corner-bl"></span><span class="corner corner-br"></span>
+
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:20px;display:flex;align-items:center;gap:10px">
+          <span style="width:3px;height:16px;background:linear-gradient(var(--gold),rgba(212,175,55,.3));border-radius:2px;display:block;flex-shrink:0"></span>
+          <span data-i18n="processTitle">Рабочий процесс</span>
+        </div>
+
+        <div class="process-steps">
+
+          <div class="process-step">
+            <div class="process-num-wrap"><span class="process-num">01</span></div>
+            <div>
+              <div class="process-step-title" data-i18n="step1">Консультация</div>
+              <div class="process-step-desc" data-i18n="step1Desc">Понять требования проекта</div>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="process-num-wrap"><span class="process-num">02</span></div>
+            <div>
+              <div class="process-step-title" data-i18n="step2">Планирование</div>
+              <div class="process-step-desc" data-i18n="step2Desc">Определить техническое решение и сроки</div>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="process-num-wrap"><span class="process-num">03</span></div>
+            <div>
+              <div class="process-step-title" data-i18n="step3">Разработка</div>
+              <div class="process-step-desc" data-i18n="step3Desc">Реализовать с качественным кодом</div>
+            </div>
+          </div>
+
+          <div class="process-step" style="padding-bottom:0">
+            <div class="process-num-wrap"><span class="process-num">04</span></div>
+            <div>
+              <div class="process-step-title" data-i18n="step4">Сдача</div>
+              <div class="process-step-desc" data-i18n="step4Desc">Тестирование и запуск в продакшн</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="bnav-item">
+    <div class="bnav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+    <span class="bnav-label" data-i18n="navHome">Главная</span>
+  </a>
+  <a href="services.html" class="bnav-item active">
+    <div class="bnav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div>
+    <span class="bnav-label" data-i18n="navServices">Услуги</span>
+  </a>
+  <a href="projects.html" class="bnav-item">
+    <div class="bnav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg></div>
+    <span class="bnav-label" data-i18n="navProjects">Проекты</span>
+  </a>
+  <a href="contact.html" class="bnav-item">
+    <div class="bnav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+    <span class="bnav-label" data-i18n="navContact">Контакты</span>
+  </a>
+  <a href="about.html" class="bnav-item">
+    <div class="bnav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    <span class="bnav-label" data-i18n="navAbout">О нас</span>
+  </a>
+</nav>
+
+<div id="lang-overlay">
+  <div class="lang-modal">
+    <div class="lang-modal-title" data-i18n="chooseLang">Выберите язык</div>
+    <div class="lang-options">
+      <div class="lang-option" data-lang="tk" onclick="setLang('tk')"><span class="lang-option-flag">🇹🇲</span><span class="lang-option-name">Türkmençe</span><svg class="lang-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m20 6-11 11-5-5"/></svg></div>
+      <div class="lang-option active" data-lang="ru" onclick="setLang('ru')"><span class="lang-option-flag">🇷🇺</span><span class="lang-option-name">Русский</span><svg class="lang-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m20 6-11 11-5-5"/></svg></div>
+      <div class="lang-option" data-lang="en" onclick="setLang('en')"><span class="lang-option-flag">🇬🇧</span><span class="lang-option-name">English</span><svg class="lang-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m20 6-11 11-5-5"/></svg></div>
+    </div>
+  </div>
+</div>
+
+<script src="i18n.js"></script>
+<script src="projects.js"></script>
+<script src="app.js"></script>
+<script>if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{})</script>
+</body>
+</html>
