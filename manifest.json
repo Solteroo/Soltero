@@ -1,9 +1,9 @@
 {
   "name": "Soltero Dev — Portfolio",
   "short_name": "Soltero Dev",
-  "description": "Full Stack & AI Developer — Web, Mobile & Automation solutions from Turkmenistan.",
-  "start_url": "index.html",
-  "scope": "./",
+  "description": "Full Stack & AI Developer — Web, Mobile & Automation solutions from Turkmenistan."
+  "scope": "/Soltero/",
+  "start_url": "/Soltero/index.html"
   "display": "standalone",
   "orientation": "portrait-primary",
   "theme_color": "#080705",
