@@ -1,40 +1,73 @@
 {
   "name": "Soltero Dev — Portfolio",
   "short_name": "Soltero Dev",
-  "description": "Full Stack & AI Developer — Web, Mobile & Automation solutions from Turkmenistan."
+  "description": "Full Stack & AI Developer — Web, Mobile & Automation solutions from Turkmenistan.",
+  
   "scope": "/Soltero/",
-  "start_url": "/Soltero/index.html"
+  "start_url": "/Soltero/index.html",
+  
   "display": "standalone",
   "orientation": "portrait-primary",
+  
   "theme_color": "#080705",
   "background_color": "#080705",
+  
   "lang": "ru",
   "dir": "ltr",
+  
   "categories": ["portfolio", "business", "productivity"],
   "id": "soltero-dev-portfolio",
 
   "icons": [
     {
-      "src": "https://i.ibb.co/bjzxBrFX/logo.png",
+      "src": "icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "https://i.ibb.co/bjzxBrFX/logo.png",
+      "src": "icons/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-72.png",
-      "sizes": "72x72",
+      "src": "icons/icon-512-maskable.png",
+      "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "maskable"
+    }
+  ],
+
+  "shortcuts": [
+    {
+      "name": "Projects",
+      "short_name": "Projects",
+      "url": "/Soltero/projects.html"
     },
     {
-      "src": "icons/icon-96.png",
-      "sizes": "96x96",
+      "name": "Contact",
+      "short_name": "Contact",
+      "url": "/Soltero/contact.html"
+    },
+    {
+      "name": "Services",
+      "short_name": "Services",
+      "url": "/Soltero/services.html"
+    }
+  ],
+
+  "related_applications": [],
+  "prefer_related_applications": false,
+
+  "display_override": ["standalone", "minimal-ui", "browser"]
+}      "sizes": "96x96",
       "type": "image/png",
       "purpose": "any"
     },
