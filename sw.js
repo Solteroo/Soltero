@@ -313,7 +313,9 @@ self.addEventListener("message", event => {
       break;
   }
 });
-
+window.addEventListener('beforeinstallprompt', (e) => {
+  console.log("INSTALL READY");
+});
 // ═══════════════════════════════════════════════════════════
 //  PUSH — geljek üçin taýýar infrastruktura
 // ═══════════════════════════════════════════════════════════
