@@ -9,7 +9,7 @@ const PRODUCTS = [
     category: "web",          // web | ai | mobile | automation
     year: 2026,
     status: "live",           // live | wip | private
-    image: "https://solteroo.github.io/Soltero/soltero.png",
+    image: "https://solteroo.github.io/Soltero/soltero.jpg",
     url: "https://solteroo.github.io/Soltero/index.html",
     tech: ["React", "Node.js", "Tailwind"],
     title: { tk: "Soltero Dev Portfolio", en: "Soltero Dev Portfolio", ru: "Soltero Dev Portfolio" },
@@ -24,7 +24,7 @@ const PRODUCTS = [
     category: "web",
     year: 2026,
     status: "live",
-    image: "https://solteroo.github.io/Soltero/barber.webp",
+    image: "https://solteroo.github.io/Soltero/barber.jpg",
     url: "https://barsal.base44.app/",
     tech: ["React", "Node.js", "Tailwind"],
     title: { tk: "Barber & Salon web sahypasy", en: "Barbershop website", ru: "Сайт Барбершопа" },
@@ -54,7 +54,7 @@ const PRODUCTS = [
     category: "ai",
     year: 2026,
     status: "live",
-    image: "https://solteroo.github.io/Soltero/bot.png",
+    image: "https://solteroo.github.io/Soltero/bot.jpg",
     url: "https://t.me/solterodev_bot",
     tech: ["Python", "Telegram Bot API", "Selenium"] ,
     title: { tk: "Telegram AI Boty", en: "Telegram AI Bot", ru: "Telegram Бот ИИ" },
