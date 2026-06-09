@@ -3,7 +3,7 @@
 //  Add / edit projects only here. All pages use this file.
 // ═══════════════════════════════════════════════════════════
 
-const PROJECTS = [
+const PRODUCTS = [
   {
     id: 1,
     category: "web",          // web | ai | mobile | automation
