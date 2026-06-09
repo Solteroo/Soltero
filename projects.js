@@ -7,7 +7,7 @@ const PRODUCTS = [
   {
     id: 1,
     category: "web",          // web | ai | mobile | automation
-    year: 2024,
+    year: 2026,
     status: "live",           // live | wip | private
     image: "https://solteroo.github.io/Soltero/soltero.png",
     url: "https://solteroo.github.io/Soltero/index.html",
@@ -21,23 +21,23 @@ const PRODUCTS = [
   },
   {
     id: 2,
-    category: "ai",
-    year: 2024,
+    category: "web",
+    year: 2026,
     status: "live",
-    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
-    url: "#",
-    tech: ["Python", "OpenAI", "FastAPI"],
-    title: { tk: "AI Çat Bot", en: "AI Chat Bot", ru: "AI Чат Бот" },
+    image: "https://solteroo.github.io/Soltero/barber.webp",
+    url: "https://barsal.base44.app/",
+    tech: ["React", "Node.js", "Tailwind"],
+    title: { tk: "Barber & Salon web sahypasy", en: "Barbershop website", ru: "Сайт Барбершопа" },
     desc: {
-      tk: "Müşderilere hyzmat etmek üçin GPT-4 esasyndaky çat bot. Awtomatik jogaplar we öwreniş ukyby.",
-      en: "GPT-4 powered chatbot for customer support. Automatic replies and learning capability.",
-      ru: "Чат-бот на базе GPT-4 для поддержки клиентов. Автоматические ответы и способность к обучению."
+    tk: "Professional barber salon web sahypa. Müşderiler üçin hyzmatlar, onlaýn bron we arassa, häzirki zaman UI dizaýn.",
+    en: "Professional barbershop website with services, online booking and clean modern UI design for customers.",
+    ru: "Профессиональный сайт барбершопа с услугами, онлайн-записью и чистым современным UI дизайном."
     }
   },
   {
     id: 3,
     category: "mobile",
-    year: 2024,
+    year: 2026,
     status: "live",
     image: "https://solteroo.github.io/Soltero/gamehub.png",
     url: "https://solteroo.github.io/Gamehub/",
@@ -51,23 +51,23 @@ const PRODUCTS = [
   },
   {
     id: 4,
-    category: "automation",
-    year: 2024,
+    category: "ai",
+    year: 2026,
     status: "live",
     image: "https://solteroo.github.io/Soltero/bot.png",
     url: "https://t.me/solterodev_bot",
-    tech: ["Python", "Selenium", "Telegram Bot API"],
-    title: { tk: "Telegram Awtomatlaşdyrma Boty", en: "Telegram Automation Bot", ru: "Telegram Бот Автоматизации" },
+    tech: ["Python", "Telegram Bot API", "Selenium"] 
+    title: { tk: "Telegram AI Boty", en: "Telegram AI Bot", ru: "Telegram Бот ИИ" },
     desc: {
-      tk: "Işi awtomatlaşdyrýan Telegram bot. Habarlaşma, tertipnama we göçürme amallaryny ýerine ýetirýär.",
-      en: "Telegram bot automating business tasks. Handles messaging, scheduling and data migration.",
-      ru: "Telegram-бот для автоматизации бизнес-процессов. Рассылка, расписание и перенос данных."
-    }
+    tk: "AI bilen işleýän Telegram boty. Habarlaşma, awtomatlaşdyrylan jogaplar, tertipnama dolandyryşy we maglumat işlemleri üçin döredilen.",
+    en: "AI-powered Telegram bot for messaging automation, smart replies, scheduling and data processing tasks.",
+    ru: "Telegram-бот на базе ИИ для автоматизации сообщений, умных ответов, управления расписанием и обработки данных."
+     }
   },
   {
     id: 5,
     category: "web",
-    year: 2025,
+    year: 2026,
     status: "live",
     image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
     url: "#",
@@ -82,7 +82,7 @@ const PRODUCTS = [
   {
     id: 6,
     category: "ai",
-    year: 2025,
+    year: 2026,
     status: "live",
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
     url: "#",
