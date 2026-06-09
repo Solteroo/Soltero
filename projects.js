@@ -9,8 +9,8 @@ const PRODUCTS = [
     category: "web",          // web | ai | mobile | automation
     year: 2024,
     status: "live",           // live | wip | private
-    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
-    url: "https://sdev.base44.app",
+    image: "https://solteroo.github.io/Soltero/soltero.png",
+    url: "https://solteroo.github.io/Soltero/index.html",
     tech: ["React", "Node.js", "Tailwind"],
     title: { tk: "Soltero Dev Portfolio", en: "Soltero Dev Portfolio", ru: "Soltero Dev Portfolio" },
     desc: {
@@ -39,23 +39,23 @@ const PRODUCTS = [
     category: "mobile",
     year: 2024,
     status: "live",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
-    url: "#",
+    image: "https://solteroo.github.io/Soltero/gamehub.png",
+    url: "https://solteroo.github.io/Gamehub/",
     tech: ["React Native", "Firebase", "Redux"],
-    title: { tk: "Söwda Mobil Programmasy", en: "E-Commerce Mobile App", ru: "Мобильное приложение для торговли" },
+    title: { tk: "Kompýuter Oýunlary", en: "PC Games Mobile App", ru: "Мобильное приложение для пс игры" },
     desc: {
-      tk: "iOS we Android üçin söwda programmasy. Onlaýn töleg, haryt katalogy we sargyt yzarlaýjy.",
-      en: "Shopping app for iOS & Android. Online payment, product catalog and order tracking.",
-      ru: "Торговое приложение для iOS и Android. Онлайн-оплата, каталог товаров и отслеживание заказов."
-    }
+    tk: "Oýun platformasy: iOS we Android üçin oýun katalogy, onlaýn mümkinçilikler we oýunlaryň yzarlaýyş ulgamy.",
+    en: "Gaming platform for iOS & Android. Game catalog, online features and game tracking system.",
+    ru: "Игровая платформа для iOS и Android. Каталог игр, онлайн-функции и система отслеживания."
+      }
   },
   {
     id: 4,
     category: "automation",
     year: 2024,
     status: "live",
-    image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&q=80",
-    url: "#",
+    image: "https://solteroo.github.io/Soltero/bot.png",
+    url: "https://t.me/solterodev_bot",
     tech: ["Python", "Selenium", "Telegram Bot API"],
     title: { tk: "Telegram Awtomatlaşdyrma Boty", en: "Telegram Automation Bot", ru: "Telegram Бот Автоматизации" },
     desc: {
@@ -102,7 +102,7 @@ const CATEGORIES = {
   web:        { tk: "Web",              en: "Web",        ru: "Web"           },
   ai:         { tk: "AI",               en: "AI",         ru: "AI"            },
   mobile:     { tk: "Mobil",            en: "Mobile",     ru: "Мобил"         },
-  automation: { tk: "Awtomatlaşdyrma",  en: "Automation", ru: "Автоматизация" }
+  automation: { tk: "Awto",             en: "Auto",       ru: "Авто" }
 };
 
 const STATUS_LABELS = {
