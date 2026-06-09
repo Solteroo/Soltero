@@ -29,7 +29,7 @@ const I18N = {
     skillAi:         "AI",
     skillWeb:        "Web",
     skillDesign:     "Dizaýn",
-    skillAuto:       "Awtomatlaşdyrma",
+    skillAuto:       "Awto",
     skillMobile:     "Mobil",
 
     /* ─── Projects section (index) ─── */
