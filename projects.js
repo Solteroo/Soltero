@@ -56,7 +56,7 @@ const PRODUCTS = [
     status: "live",
     image: "https://solteroo.github.io/Soltero/bot.png",
     url: "https://t.me/solterodev_bot",
-    tech: ["Python", "Telegram Bot API", "Selenium"] 
+    tech: ["Python", "Telegram Bot API", "Selenium"] ,
     title: { tk: "Telegram AI Boty", en: "Telegram AI Bot", ru: "Telegram Бот ИИ" },
     desc: {
     tk: "AI bilen işleýän Telegram boty. Habarlaşma, awtomatlaşdyrylan jogaplar, tertipnama dolandyryşy we maglumat işlemleri üçin döredilen.",
