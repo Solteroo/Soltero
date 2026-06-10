@@ -1,4 +1,4 @@
-const SW_VERSION = "soltero-v1.5.2";
+const SW_VERSION = "soltero-v1.5.3";
 
 const CACHE_STATIC = SW_VERSION + "-static";
 const CACHE_PAGES  = SW_VERSION + "-pages";
