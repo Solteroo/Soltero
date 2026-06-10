@@ -1,11 +1,9 @@
 // ═══════════════════════════════════════════════════════════
 //  i18n.js — Soltero Dev | All Translations (TK / RU / EN)
-//  Edit here to update text across ALL pages
 // ═══════════════════════════════════════════════════════════
 
 const I18N = {
   tk: {
-    /* ─── Nav ─── */
     navHome:      "Baş sahypa",
     navServices:  "Hyzmatlar",
     navProjects:  "Taslamalar",
@@ -13,7 +11,6 @@ const I18N = {
     navAbout:     "Biz barada",
     chooseLang:   "Dil saýlaň",
 
-    /* ─── Index hero ─── */
     heroAvailable:  "Iş üçin elýeterli",
     heroBtnWork:    "Işleri görmek",
     heroBtnContact: "Habarlaşmak",
@@ -25,21 +22,18 @@ const I18N = {
     statClients:    "Müşderi",
     statSatisfied:  "Razy",
 
-    /* ─── Skills ─── */
     skillAi:         "AI",
     skillWeb:        "Web",
     skillDesign:     "Dizaýn",
     skillAuto:       "Awto",
     skillMobile:     "Mobil",
 
-    /* ─── Projects section (index) ─── */
     sectionProjects: "Taslamalar",
     portfolioTitle:  "Portfolio",
     portfolioSub:    "Iş Nusgalary",
     portfolioDesc:   "Web, AI, mobil programmalar we awtomatlaşdyrma pudaklaryndaky taslamalar.",
     viewAllProjects: "Ähli taslamalary görmek",
 
-    /* ─── Projects page ─── */
     pageTitle:    "Taslamalar",
     pageDesc:     "Web, AI, Mobil we Awtomatlaşdyrma pudaklaryndaky taslamalar.",
     filterAll:    "Ähli",
@@ -51,7 +45,6 @@ const I18N = {
     catBadgeMobile:     "Mobil",
     catBadgeAutomation: "Awtomatlaşdyrma",
 
-    /* ─── Services page ─── */
     servicesTitle:    "Hyzmatlar",
     servicesSubtitle: "Hödürlenýän hyzmatlar",
     servicesDesc:     "Professional web, mobil we AI çözgütleri.",
@@ -67,6 +60,7 @@ const I18N = {
     svcBotDesc:   "Telegram, WhatsApp we beýleki platformalar üçin botlar",
     svcDesignTitle: "UI/UX Dizaýn",
     svcDesignDesc:  "Ulanyjy üçin amatly we owadan interfeýsler",
+
     processTitle:   "Iş prosesi",
     step1: "Maslahat beriş",
     step1Desc: "Taslamaňyzyň zerurlyklaryny düşündiriş",
@@ -77,16 +71,15 @@ const I18N = {
     step4: "Eltip bermek",
     step4Desc: "Synagdan geçirmek we önüm hökmünde bermek",
 
-    /* ─── Contact page ─── */
     contactTitle:   "Aragatnaşyk",
     contactSubtitle:"Hyzmatdaşlyga taýýar",
     contactDesc:    "Taslamaňyz barada maslahatlaşalyň.",
     tgLabel:  "Telegram",
     tgValue:  "@solterodev",
     emailLabel: "E-poçta",
-    emailValue: "solterodev@gmail.com",
+    emailValue: "bizsoltero@gmail.com",
     phoneLabel: "Telefon",
-    phoneValue: "+993 61 403 543",
+    phoneValue: "+99361403543",
     formTitle:      "Habar goýmak",
     formName:       "Email ýa-da Gmail",
     formNamePh:     "Email ýa-da Gmail giriziň",
@@ -96,7 +89,6 @@ const I18N = {
     formSending:    "Iberilýär...",
     formSuccess:    "Habar iberildi! Tiz wagtda habarlaşarys.",
 
-    /* ─── About page ─── */
     aboutTitle:     "Biz barada",
     aboutSubtitle:  "Developer hakynda",
     aboutBio:       "Men Soltero — Türkmenistanly Full Stack & AI işläp taýýarlaýjy. Web, Mobil we AI pudaklarynda 3+ ýyllyk tejribe bilen önümçilik derejesinde çözgütler döredýärin.",
@@ -110,7 +102,6 @@ const I18N = {
     expItem2Desc:   "GPT-4, TensorFlow bilen hakyky taslamalar",
     expItem3Title:  "Mobil Üstünlik",
     expItem3Desc:   "React Native bilen iOS & Android",
-    downloadCV:     "CV Ýüklemek",
   },
 
   en: {
@@ -170,6 +161,7 @@ const I18N = {
     svcBotDesc:   "Telegram, WhatsApp and other platform bots",
     svcDesignTitle: "UI/UX Design",
     svcDesignDesc:  "User-friendly and beautiful interfaces",
+
     processTitle:   "Work Process",
     step1: "Consultation",
     step1Desc: "Understand your project requirements",
@@ -186,9 +178,9 @@ const I18N = {
     tgLabel:  "Telegram",
     tgValue:  "@solterodev",
     emailLabel: "Email",
-    emailValue: "solterodev@gmail.com",
+    emailValue: "bizsoltero@gmail.com",
     phoneLabel: "Phone",
-    phoneValue: "+993 61 403 543",
+    phoneValue: "+99361403543",
     formTitle:      "Send a message",
     formName:       "Your email or Gmail",
     formNamePh:     "Enter your email or Gmail",
@@ -197,21 +189,6 @@ const I18N = {
     formSend:       "Send",
     formSending:    "Sending...",
     formSuccess:    "Message sent! We'll get in touch soon.",
-
-    aboutTitle:     "About",
-    aboutSubtitle:  "About the developer",
-    aboutBio:       "I'm Soltero — a Turkmenistan-based Full Stack & AI Developer. With 3+ years of experience in Web, Mobile and AI, I build production-grade solutions.",
-    techStackTitle: "Tech Stack",
-    skillsTitle:    "Skills",
-    expTitle:       "Experience",
-    feedbackTitle:  "Client Feedback",
-    expItem1Title:  "Strong Foundation",
-    expItem1Desc:   "Working experience with React, Node.js, Python",
-    expItem2Title:  "AI Integration",
-    expItem2Desc:   "Real projects with GPT-4, TensorFlow",
-    expItem3Title:  "Mobile Excellence",
-    expItem3Desc:   "iOS & Android with React Native",
-    downloadCV:     "Download CV",
   },
 
   ru: {
@@ -228,6 +205,7 @@ const I18N = {
     heroTagline:    "Web, Mobile & AI — от идеи до продакшна.",
     heroRole:       "Full Stack & AI Developer",
     heroLocation:   "Туркменистан · Удалённо",
+
     statProjects:   "Проекты",
     statYears:      "Лет",
     statClients:    "Клиентов",
@@ -271,6 +249,7 @@ const I18N = {
     svcBotDesc:   "Боты для Telegram, WhatsApp и других платформ",
     svcDesignTitle: "UI/UX Дизайн",
     svcDesignDesc:  "Удобные и красивые интерфейсы",
+
     processTitle:   "Рабочий процесс",
     step1: "Консультация",
     step1Desc: "Понять требования проекта",
@@ -287,9 +266,9 @@ const I18N = {
     tgLabel:  "Telegram",
     tgValue:  "@solterodev",
     emailLabel: "E-mail",
-    emailValue: "solterodev@gmail.com",
+    emailValue: "bizsoltero@gmail.com",
     phoneLabel: "Телефон",
-    phoneValue: "+993 61 403 543",
+    phoneValue: "+99361403543",
     formTitle:      "Отправить сообщение",
     formName:       "Ваш email или Gmail",
     formNamePh:     "Введите email или Gmail",
@@ -298,21 +277,6 @@ const I18N = {
     formSend:       "Отправить",
     formSending:    "Отправляется...",
     formSuccess:    "Сообщение отправлено! Скоро свяжемся.",
-
-    aboutTitle:     "О нас",
-    aboutSubtitle:  "О разработчике",
-    aboutBio:       "Я Soltero — Full Stack & AI разработчик из Туркменистана. С опытом более 3 лет в Web, Mobile и AI создаю решения продакшн-уровня.",
-    techStackTitle: "Технологии",
-    skillsTitle:    "Навыки",
-    expTitle:       "Опыт",
-    feedbackTitle:  "Отзывы клиентов",
-    expItem1Title:  "Прочная база",
-    expItem1Desc:   "Опыт работы с React, Node.js, Python",
-    expItem2Title:  "AI Интеграция",
-    expItem2Desc:   "Реальные проекты с GPT-4, TensorFlow",
-    expItem3Title:  "Мобильное мастерство",
-    expItem3Desc:   "iOS & Android с React Native",
-    downloadCV:     "Скачать CV",
   }
 };
 
@@ -321,4 +285,3 @@ const LANG_META = {
   en: { flag: "🇬🇧", code: "EN", name: "English" },
   ru: { flag: "🇷🇺", code: "RU", name: "Русский" }
 };
-    
