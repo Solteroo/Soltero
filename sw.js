@@ -1,6 +1,6 @@
 // ===============================
 //  SOLTERO PWA SERVICE WORKER
-//  Production Ready v1
+//  Production Ready v2 (FIXED)
 // ===============================
 
 const SW_VERSION = "soltero-v1.5.4";
@@ -34,7 +34,7 @@ const PRECACHE_URLS = [
 ];
 
 // ===============================
-// OFFLINE PAGE
+// OFFLINE PAGE (KEPT - IMPORTANT)
 // ===============================
 const OFFLINE_HTML = `
 <!DOCTYPE html>
@@ -77,6 +77,7 @@ self.addEventListener("install", event => {
         )
       );
 
+      // store offline page
       await cache.put(
         OFFLINE_KEY,
         new Response(OFFLINE_HTML, {
@@ -118,19 +119,25 @@ self.addEventListener("fetch", event => {
 
   const url = new URL(request.url);
 
-  // HTML → Network First
+  // ===========================
+  // HTML → NETWORK FIRST
+  // ===========================
   if (request.headers.get("accept")?.includes("text/html")) {
     event.respondWith(networkFirstHTML(request));
     return;
   }
 
-  // JS / CSS / Images → Cache First
+  // ===========================
+  // JS / CSS / IMAGES → CACHE FIRST
+  // ===========================
   if (/\.(js|css|png|jpg|jpeg|webp|svg|ico)$/.test(url.pathname)) {
     event.respondWith(cacheFirst(request, CACHE_STATIC));
     return;
   }
 
-  // fallback
+  // ===========================
+  // FALLBACK
+  // ===========================
   event.respondWith(networkFallback(request));
 });
 
@@ -148,7 +155,7 @@ async function cacheFirst(request, cacheName) {
     if (res && res.ok) cache.put(request, res.clone());
     return res;
   } catch {
-    return offlinePage();
+    return cached || offlinePage();
   }
 }
 
@@ -163,13 +170,16 @@ async function networkFirstHTML(request) {
 
     if (res && res.ok) {
       cache.put(request, res.clone());
+      return res;
     }
+  } catch (e) {}
 
-    return res;
-  } catch {
-    const cached = await cache.match(request);
-    return cached || offlinePage();
-  }
+  // ✔ fallback to cache first
+  const cached = await cache.match(request);
+  if (cached) return cached;
+
+  // ✔ ONLY if nothing exists → offline page
+  return offlinePage();
 }
 
 // ===============================
@@ -179,12 +189,13 @@ async function networkFallback(request) {
   try {
     return await fetch(request);
   } catch {
-    return offlinePage();
+    const cache = await caches.open(CACHE_STATIC);
+    return cache.match(request) || offlinePage();
   }
 }
 
 // ===============================
-// OFFLINE PAGE SAFE RETURN
+// OFFLINE PAGE
 // ===============================
 async function offlinePage() {
   const cache = await caches.open(CACHE_STATIC);
@@ -192,7 +203,7 @@ async function offlinePage() {
 }
 
 // ===============================
-// OPTIONAL: FORCE UPDATE ON NEW SW
+// FORCE UPDATE SUPPORT
 // ===============================
 self.addEventListener("message", event => {
   if (event.data === "SKIP_WAITING") {
