@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-page="index">
+<html lang="en" data-page="index">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +27,86 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;800;900&family=Inter:wght@400;500;600;700;800&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://solteroo.github.io/Soltero/soltero.css">
   <!-- Schema -->
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Soltero Dev","url":"https://soltero.dev"}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@type": "Person",
+      "@id": "https://solteroo.github.io/Soltero/#person",
+      "name": "Soltero Dev",
+      "url": "https://solteroo.github.io/Soltero/",
+      "image": "https://solteroo.github.io/Soltero/logo.png",
+      "jobTitle": "Frontend Developer",
+      "description": "Frontend developer specializing in modern web applications, UI/UX design and PWA development.",
+      "knowsAbout": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "UI/UX Design",
+        "PWA"
+      ],
+      "sameAs": [
+        "https://github.com/Solteroo",
+        "https://t.me/solterodev"
+      ]
+    },
+
+    {
+      "@type": "Organization",
+      "@id": "https://solteroo.github.io/Soltero/#organization",
+      "name": "Soltero Dev Studio",
+      "url": "https://solteroo.github.io/Soltero/",
+      "logo": "https://solteroo.github.io/Soltero/logo.png",
+      "description": "Independent web development studio focused on modern frontend solutions and creative UI design.",
+      "founder": {
+        "@id": "https://solteroo.github.io/Soltero/#person"
+      },
+      "sameAs": [
+        "https://github.com/Solteroo",
+        "https://t.me/solterodev"
+      ]
+    },
+
+    {
+      "@type": "WebSite",
+      "@id": "https://solteroo.github.io/Soltero/#website",
+      "url": "https://solteroo.github.io/Soltero/",
+      "name": "Soltero Dev Portfolio",
+      "description": "Official portfolio website of Soltero Dev",
+      "publisher": {
+        "@id": "https://solteroo.github.io/Soltero/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://solteroo.github.io/Soltero/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+
+    {
+      "@type": "WebPage",
+      "@id": "https://solteroo.github.io/Soltero/#webpage",
+      "url": "https://solteroo.github.io/Soltero/",
+      "name": "Soltero Dev Portfolio - Home",
+      "isPartOf": {
+        "@id": "https://solteroo.github.io/Soltero/#website"
+      },
+      "about": {
+        "@id": "https://solteroo.github.io/Soltero/#person"
+      },
+      "primaryEntityOfPage": {
+        "@id": "https://solteroo.github.io/Soltero/#person"
+      },
+      "description": "Portfolio homepage of Soltero Dev showcasing projects and skills.",
+      "inLanguage": "en"
+    }
+
+  ]
+}
+  </script>
 </head>
 <body>
 
