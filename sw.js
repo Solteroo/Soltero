@@ -3,7 +3,7 @@
 //  Production Ready v2 (FIXED)
 // ===============================
 
-const SW_VERSION = "soltero-v1.5.4";
+const SW_VERSION = "soltero-v1.5.5";
 
 // CACHE NAMES
 const CACHE_STATIC = `${SW_VERSION}-static`;
@@ -38,30 +38,141 @@ const PRECACHE_URLS = [
 // ===============================
 const OFFLINE_HTML = `
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Offline</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offline • Soltero Dev</title>
+
 <style>
-body{
+:root{
+  --bg:#070707;
+  --card:#0e0e0e;
+  --gold:#d4af37;
+  --text:#ffffff;
+  --muted:#9a9a9a;
+}
+
+*{
   margin:0;
-  background:#0a0a0a;
-  color:#fff;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui,-apple-system,sans-serif;
+}
+
+body{
+  height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  height:100vh;
-  font-family:system-ui;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* subtle gold glow background */
+body::before{
+  content:"";
+  position:absolute;
+  width:400px;
+  height:400px;
+  background:radial-gradient(circle, rgba(212,175,55,0.15), transparent 70%);
+  top:-100px;
+  left:-100px;
+  filter:blur(20px);
+}
+
+.card{
+  width:90%;
+  max-width:380px;
+  background:linear-gradient(145deg,#0f0f0f,#0a0a0a);
+  border:1px solid rgba(212,175,55,0.25);
+  border-radius:18px;
+  padding:28px;
   text-align:center;
+  position:relative;
+}
+
+.badge{
+  display:inline-block;
+  font-size:11px;
+  padding:5px 10px;
+  border-radius:999px;
+  border:1px solid rgba(212,175,55,0.4);
+  color:var(--gold);
+  margin-bottom:14px;
+}
+
+.icon{
+  width:55px;
+  height:55px;
+  margin:0 auto 15px;
+  border-radius:50%;
+  border:1px solid rgba(212,175,55,0.5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold);
+  font-size:22px;
+}
+
+h1{
+  font-size:20px;
+  margin-bottom:8px;
+}
+
+p{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.5;
+  margin-bottom:18px;
+}
+
+.btn{
+  display:inline-block;
+  padding:9px 16px;
+  background:var(--gold);
+  color:#000;
+  font-weight:600;
+  border-radius:10px;
+  text-decoration:none;
+  transition:0.2s ease;
+}
+
+.btn:active{
+  transform:scale(0.97);
+}
+
+.footer{
+  margin-top:14px;
+  font-size:11px;
+  color:#666;
 }
 </style>
 </head>
+
 <body>
-  <div>
-    <h2>You're Offline</h2>
-    <p>Please check your internet connection</p>
+
+<div class="card">
+
+  <div class="badge">OFFLINE MODE</div>
+
+  <div class="icon">⚡</div>
+
+  <h1>Connection Lost</h1>
+
+  <p>
+    You are currently offline.<br>
+    Cached content will load automatically if available.
+  </p>
+
+  <a class="btn" onclick="location.reload()">Retry</a>
+
+  <div class="footer">
+    Soltero Dev • Black Gold PWA
   </div>
+
+</div>
+
 </body>
 </html>`;
 
