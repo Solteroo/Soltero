@@ -5,7 +5,7 @@
 
   "id": "https://solteroo.github.io/Soltero/",
   "scope": "https://solteroo.github.io/Soltero/",
-  "start_url": "https://solteroo.github.io/Soltero/index.html",
+  "start_url": "https://solteroo.github.io/Soltero/",
 
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui", "browser"],
